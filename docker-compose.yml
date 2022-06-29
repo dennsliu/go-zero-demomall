@@ -1,0 +1,56 @@
+version: '3.5'
+# 网络配置
+networks:
+  backend:
+    driver: bridge # 设置网络模式
+# 服务容器配置
+services:
+  service.user:
+    build:
+      context: ./
+      dockerfile: ./user/rpc/Dockerfile
+    container_name: service.user
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    restart: always
+  service.order:
+    build:
+      context: ./
+      dockerfile: ./order/api/Dockerfile
+    container_name: service.order
+    ports:
+      - "8888:8888"
+    networks:
+      - backend
+    restart: always
+  etcd:
+    # 自定义容器名称
+    image: bitnami/etcd
+    container_name: etcd
+    environment:
+      - TZ=Asia/Shanghai
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      #- ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379
+    ports:
+      # 设置端口映射 Etcd 服务映射宿主机端口号，可在宿主机127.0.0.1:2379访问
+      - "2379:2379"
+    networks:
+      - backend
+    restart: always
+
+  etcd-manage:
+    image: evildecay/etcdkeeper
+    container_name: etcd-manage
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "7000:8080" # 设置容器8080端口映射指定宿主机端口，用于宿主机访问可视化web
+    depends_on:
+      # 依赖容器
+      - etcd # 在 etcd 服务容器启动后启动
+    networks:
+      - backend
+    restart: always

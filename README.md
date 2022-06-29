@@ -125,3 +125,31 @@ func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (*types.OrderReply, error)
         Name: "test order",
     }, nil
 }
+
+启动服务并验证#
+启动etcd
+$ etcd
+下载依赖
+
+# 在 go-zero-demo 目录下
+$ go mod tidy
+启动user rpc
+
+# 在 mall/user/rpc 目录
+$ go run user.go -f etc/user.yaml
+Starting rpc server at 127.0.0.1:8080...
+启动order api
+
+# 在 mall/order/api 目录
+$ go run order.go -f etc/order.yaml
+Starting server at 0.0.0.0:8888...
+访问order api
+
+$ curl -i -X GET http://localhost:8888/api/order/get/1
+
+生成Dockerfile文件
+cd ./user/rpc 
+goctl docker --go user.go
+
+cd ./order/api/ 
+goctl docker --go order.go
