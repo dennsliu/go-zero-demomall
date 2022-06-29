@@ -58,8 +58,8 @@ $ vim internal/svc/servicecontext.go
 package svc
 
 import (
-    "go-zero-demo/mall/order/api/internal/config"
-    "go-zero-demo/mall/user/rpc/user"
+    "go-zero-demo/order/api/internal/config"
+    "go-zero-demo/user/rpc/user"
 
     "github.com/zeromicro/go-zero/zrpc"
 )
@@ -87,9 +87,9 @@ import (
     "context"
     "errors"
 
-    "go-zero-demo/mall/order/api/internal/svc"
-    "go-zero-demo/mall/order/api/internal/types"
-    "go-zero-demo/mall/user/rpc/types/user"
+    "go-zero-demomall/order/api/internal/svc"
+    "go-zero-demomall/order/api/internal/types"
+    "go-zero-demomall/user/rpc/types/user"
 
     "github.com/zeromicro/go-zero/core/logx"
 )

@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"go-zero-demomall/mall/user/rpc/internal/logic"
-	"go-zero-demomall/mall/user/rpc/internal/svc"
-	"go-zero-demomall/mall/user/rpc/types/user"
+	"go-zero-demomall/user/rpc/internal/logic"
+	"go-zero-demomall/user/rpc/internal/svc"
+	"go-zero-demomall/user/rpc/user"
 )
 
 type UserServer struct {
@@ -22,7 +22,7 @@ func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
 	}
 }
 
-func (s *UserServer) GeUser(ctx context.Context, in *user.IdRequest) (*user.UserResponse, error) {
-	l := logic.NewGeUserLogic(ctx, s.svcCtx)
-	return l.GeUser(in)
+func (s *UserServer) GetUser(ctx context.Context, in *user.IdRequest) (*user.UserResponse, error) {
+	l := logic.NewGetUserLogic(ctx, s.svcCtx)
+	return l.GetUser(in)
 }

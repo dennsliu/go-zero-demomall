@@ -3,6 +3,7 @@ module go-zero-demomall
 go 1.18
 
 require (
+	github.com/golang/protobuf v1.5.2
 	github.com/zeromicro/go-zero v1.3.4
 	google.golang.org/grpc v1.47.0
 	google.golang.org/protobuf v1.28.0
@@ -22,7 +23,6 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.1 // indirect
 	github.com/golang/mock v1.6.0 // indirect
-	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.7 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect

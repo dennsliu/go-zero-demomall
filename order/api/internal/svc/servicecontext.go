@@ -2,19 +2,19 @@ package svc
 
 import (
 	"go-zero-demomall/order/api/internal/config"
-	"os/user"
+	"go-zero-demomall/user/rpc/userclient"
 
 	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {
 	Config  config.Config
-	UserRpc user.User
+	UserRpc userclient.User
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:  c,
-		UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
+		UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
 	}
 }

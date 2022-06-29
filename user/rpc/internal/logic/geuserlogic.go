@@ -3,30 +3,29 @@ package logic
 import (
 	"context"
 
-	"go-zero-demomall/mall/user/rpc/internal/svc"
-	"go-zero-demomall/mall/user/rpc/types/user"
+	"go-zero-demomall/user/rpc/internal/svc"
+	"go-zero-demomall/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GeUserLogic struct {
+type GetUserLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewGeUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GeUserLogic {
-	return &GeUserLogic{
+func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLogic {
+	return &GetUserLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *GeUserLogic) GeUser(in *user.IdRequest) (*user.UserResponse, error) {
-	// todo: add your logic here and delete this line
+func (l *GetUserLogic) GetUser(in *user.IdRequest) (*user.UserResponse, error) {
 	return &user.UserResponse{
 		Id:   "1",
-		Name: "Denny testing",
+		Name: "test",
 	}, nil
 }
