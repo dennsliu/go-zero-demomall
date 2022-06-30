@@ -8,4 +8,5 @@ type OrderReq struct {
 type OrderReply struct {
 	Id   string `path:"id"`
 	Name string `json:"name"`
+	UserName string `json:"username"`
 }

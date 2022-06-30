@@ -38,7 +38,8 @@ func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (resp *types.OrderReply, e
 	}
 	returnString := "testing order ID: " + req.Id
 	return &types.OrderReply{
-		Id:   req.Id,
-		Name: returnString,
+		Id:       req.Id,
+		Name:     returnString,
+		UserName: user.Name,
 	}, nil
 }
