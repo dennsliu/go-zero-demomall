@@ -36,9 +36,9 @@ func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (resp *types.OrderReply, e
 	if user.Name != "test" {
 		return nil, errors.New("User not found")
 	}
+	returnString := "testing order ID: " + req.Id
 	return &types.OrderReply{
 		Id:   req.Id,
-		Name: "testing order",
+		Name: returnString,
 	}, nil
-	return
 }
